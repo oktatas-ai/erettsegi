@@ -1,1 +1,2 @@
 from describe.open_pdf_to_buffer import open_pdf_to_buffer
+from describe.remove_headers_and_footers import remove_headers_and_footers
