@@ -17,8 +17,9 @@ for file in tqdm(sorted(glob(".erettsegi/e_tort_19okt_fl.pdf"))):
     pdf_buffer = remove_headers_and_footers(pdf_buffer)
 
     page_buffers = split_pdf_to_page_buffers(pdf_buffer)
+    renderings = convert_pdf_to_images(pdf_buffer)
 
-    for i, page_buffer in enumerate(page_buffers):
+    for i, (page_buffer, rendering) in enumerate(zip(page_buffers, renderings)):
         images = extract_images(page_buffer)
 
         for img_data in images:
@@ -32,7 +33,7 @@ for file in tqdm(sorted(glob(".erettsegi/e_tort_19okt_fl.pdf"))):
         for img_data in images:
             filename = os.path.splitext(os.path.basename(file))[0]
 
-            ff = (
+            image_filename_with_metadata = (
                 f"file-{filename}"
                 + f"-page-{img_data['page']}"
                 + f"-index-{img_data['index']}"
@@ -43,6 +44,6 @@ for file in tqdm(sorted(glob(".erettsegi/e_tort_19okt_fl.pdf"))):
                 + f".{img_data['extension']}"
             )
 
-            img_data["image"].save(ff)
+            img_data["image"].save(image_filename_with_metadata)
 
     break
