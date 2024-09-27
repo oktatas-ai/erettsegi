@@ -20,7 +20,7 @@ def remove_headers_and_footers(pdf_buffer):
                 page_rect.y0 + LAYOUT_HEIGHT,
             )
         )
-        shape.finish(color=None, fill=(1, 0, 0), fill_opacity=0.5)
+        shape.finish(color=None, fill=(1, 1, 1), fill_opacity=1)
 
         shape.draw_rect(
             fitz.Rect(
@@ -30,7 +30,7 @@ def remove_headers_and_footers(pdf_buffer):
                 page_rect.y1,
             )
         )
-        shape.finish(color=None, fill=(0, 0, 1), fill_opacity=0.5)
+        shape.finish(color=None, fill=(1, 1, 1), fill_opacity=1)
 
         shape.commit()
 
