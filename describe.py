@@ -27,8 +27,8 @@ for file in tqdm(sorted(glob(".erettsegi/e_tort_19okt_fl.pdf"))):
 
         images = merge_adjacent_images(images)
 
-        for i, img_data in enumerate(images):
-            img_data["index"] = i + 1
+        for j, img_data in enumerate(images):
+            img_data["index"] = j + 1
 
         for img_data in images:
             filename = os.path.splitext(os.path.basename(file))[0]
